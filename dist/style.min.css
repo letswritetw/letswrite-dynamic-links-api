@@ -1,0 +1,1 @@
+*,*::before,*::after{box-sizing:border-box}body{background:#F5F5F5}.container{padding-top:2vh;padding-bottom:2vh;max-width:768px}.text-center{text-align:center}.result-wrap{padding:2rem;background:#FFF;border-radius:.25rem}.result-wrap p{margin-bottom:0}.button-primary.disabled{pointer-events:none;background:#BBB;border-color:#BBB}.error{color:#f44336}

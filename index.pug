@@ -1,0 +1,74 @@
+- var link = 'dynamic-links-api'
+- var title = 'Firebase Dynamic Links 由 API 建立縮網址'
+- var description = 'Firebase Dynamic Links 由 API 建立縮網址。來自己做一個Google Maps網址的縮網址生成器！'
+
+<!DOCTYPE html>
+html(lang="zh-TW")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title #{title} - Augustus - Let's Write
+
+    link(rel="canonical", href=`https://letswritetw.github.io/${link}/`)
+    meta(property="og:url", content=`https://letswritetw.github.io/${link}/`)
+
+    meta(property="fb:app_id", content="2435108729902508")
+    meta(property="og:type", content="website")
+
+    meta(property="og:site_name", content="Let's Write")
+    meta(property="og:title", content=`${title} - Augustus - Let's Write`)
+    meta(itemprop="name", content=`${title} - Augustus - Let's Write`)
+
+    meta(name="description", content=description)
+    meta(property="og:description", content=description)
+    meta(itemprop="description", content=description)
+
+    meta(itemprop="image", content=`https://letswritetw.github.io/${link}/fb.jpg`)
+    meta(property="og:image", content=`https://letswritetw.github.io/${link}/fb.jpg`)
+    meta(property="og:image:width", content="1200")
+    meta(property="og:image:height", content="630")
+    meta(property="og:image:alt", content=title)
+
+    link(rel="shortcut icon", href="https://i0.wp.com/letswrite.tw/wp-content/uploads/2019/07/cropped-letswrite512-1.jpg")
+
+    //- css
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css")
+    link(rel="stylesheet", href="dist/style.min.css")
+
+    // Google Tag Manager
+    script.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PGQ9WQT');
+  body
+
+    // Google Tag Manager (noscript)
+    noscript
+      iframe(src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT", height="0", width="0", style="display:none;visibility:hidden")
+    
+    #app.container
+      .text-center
+        h1 Firebase Dynamic Links<br/>由 API 建立縮網址
+      hr
+
+      form
+        .row
+          input#maps.u-full-width(type="url", v-model="link", placeholder="請貼上Google Maps上的網址")
+          .text-center
+            button.button-primary(type="button", :class="{ 'disabled': link == '' }" @click="submit") 產生縮網址
+      
+      hr
+      
+      section.result-wrap(v-if="result != '' && error == null")
+        p 縮網址為：
+          a(:href="result", target="_blank") {{ result }}
+      
+      section.result-wrap(v-if="error != null")
+        p 錯誤：
+          span.error {{ error }}
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js")
+    script(src="dist/main.min.js")
